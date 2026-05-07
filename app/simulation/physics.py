@@ -1,6 +1,4 @@
-G = 1.0
-
-def compute_gravitational_force(p1, p2):
+def compute_gravitational_force(p1, p2, G):
     dx = p2.x - p1.x
     dy = p2.y - p1.y
 

@@ -12,7 +12,7 @@ def simulate(request: SimulationRequest):
         for p in request.particles
     ]
 
-    results = run_simulation(particles, request.steps, request.dt)
+    results = run_simulation(particles, request.steps, request.dt, request.config)
 
     return {"results": results}
 

@@ -1,10 +1,11 @@
 from app.models.particle import Particle
 from app.simulation.physics import compute_gravitational_force
 
-def run_simulation(particles: list[Particle], steps: int, dt: float):
+def run_simulation(particles: list[Particle], steps: int, dt: float, config):
     results = []
 
-    bounds = (-10, 10, -10, 10)
+    bounds = config.bounds
+    G = config.G
 
     for _ in range(steps):
 
@@ -13,7 +14,7 @@ def run_simulation(particles: list[Particle], steps: int, dt: float):
                 p1 = particles[i]
                 p2 = particles[j]
 
-                fx, fy = compute_gravitational_force(p1, p2)
+                fx, fy = compute_gravitational_force(p1, p2, G)
 
                 p1.apply_force(fx, fy)
                 p2.apply_force(-fx,-fy)
