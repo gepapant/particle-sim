@@ -84,15 +84,49 @@ function App() {
     draw();
   };
 
-  return (
-    <div style={{ textAlign: "center", color: "white", background: "#111", minHeight: "100vh", paddingTop: "20px" }}>
-      
-      <h1>Particle Simulation</h1>
+return (
+  <div
+    style={{
+      background: "#111",
+      minHeight: "100vh",
+      color: "white",
+      padding: "20px",
+      fontFamily: "Arial",
+    }}
+  >
+    <h1
+      style={{
+        textAlign: "center",
+        marginBottom: "30px",
+      }}
+    >
+      Particle Simulation Platform
+    </h1>
 
-      <div style={{ marginBottom: "20px" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "30px",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        flexWrap: "wrap",
+      }}
+    >
+      <div
+        style={{
+          background: "#1b1b1b",
+          padding: "20px",
+          borderRadius: "10px",
+          width: "300px",
+          boxShadow: "0 0 10px rgba(0,255,255,0.2)",
+        }}
+      >
+        <h2 style={{ marginBottom: "20px" }}>
+          Controls
+        </h2>
 
-        <div style={{ margin: "10px" }}>
-          <label>Gravity: </label>
+        <div style={{ marginBottom: "20px" }}>
+          <label>Gravity</label>
 
           <input
             type="range"
@@ -101,23 +135,29 @@ function App() {
             step="0.1"
             value={gravity}
             onChange={(e) => setGravity(Number(e.target.value))}
+            style={{ width: "100%" }}
           />
 
-          <span> {gravity}</span>
+          <div>{gravity}</div>
         </div>
 
-        <div style={{ margin: "10px" }}>
-          <label>Steps: </label>
+        <div style={{ marginBottom: "20px" }}>
+          <label>Steps</label>
 
           <input
             type="number"
             value={steps}
             onChange={(e) => setSteps(Number(e.target.value))}
+            style={{
+              width: "100%",
+              padding: "8px",
+              marginTop: "5px",
+            }}
           />
         </div>
 
-        <div style={{ margin: "10px" }}>
-          <label>Particles: </label>
+        <div style={{ marginBottom: "20px" }}>
+          <label>Particles</label>
 
           <input
             type="number"
@@ -125,35 +165,52 @@ function App() {
             max="20"
             value={particleCount}
             onChange={(e) => setParticleCount(Number(e.target.value))}
+            style={{
+              width: "100%",
+              padding: "8px",
+              marginTop: "5px",
+            }}
           />
         </div>
 
+        <button
+          onClick={runSimulation}
+          style={{
+            width: "100%",
+            padding: "12px",
+            background: "cyan",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "bold",
+            borderRadius: "5px",
+          }}
+        >
+          Run Simulation
+        </button>
       </div>
 
-      <button
-        onClick={runSimulation}
+      {/* CANVAS PANEL */}
+      <div
         style={{
-          padding: "10px 20px",
-          cursor: "pointer",
-          marginBottom: "20px",
+          background: "#1b1b1b",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0 0 10px rgba(0,255,255,0.2)",
         }}
       >
-        Run Simulation
-      </button>
-
-      <div>
         <canvas
           ref={canvasRef}
           width={800}
           height={600}
           style={{
-            border: "1px solid white",
+            border: "1px solid #333",
             background: "black",
           }}
         />
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
